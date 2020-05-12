@@ -1,0 +1,49 @@
+==============================
+Installing and using PyFinder
+=============================
+
+Introduction
+==========
+Pyfinder allow you either to find files in the file-system or some text inside files.
+It provides a library ( the ‘pyfinder.py’ file) and a script called “pyfinder”, that can be executed from the commad line.
+
+Supported Python versions
+====================
+PyFinder requires Python versions 3.3 or above
+
+Installation instructions
+=======================
+PyFinder is only released as a source distribution. Instaling by :
+
+“ pip <http://www.pip-installaer.org/>” _ is the simplest and preferred way on all systems::
+
+$ pip install pyfinder
+
+
+How to use PyFinder
+=======================
+To use ‘pyfinder’ module just import it and call its functions.
+
+Here is some examples::
+
+
+>>> import os
+>>> import pyfinder
+>>> import email
+>>> for file in pyfinder.file_finder('message.py',os.path.dirname(email.__file__)):
+...     print(os.path.basename(file))
+...
+...
+message.py
+
+>>> for match in pyfinder.file_inspector(pyfinder.__file__, 'def file_*'):
+...     print(match, end='')
+... 
+def file_finder(pattern: str, top_dir: str=os.curdir, recursive: bool=False):
+def file_inspector(file_name: str, pattern: str):
+
+
+For more information about the module usage look at its documentation(‘’pyfinder.__doc__’’).
+There is also a ‘’pyfinder’’ script that allow you to easly find files and text inside files from the command line.
+
+For information about the script usage look at the output of ‘’pyfinder -h ‘’.
